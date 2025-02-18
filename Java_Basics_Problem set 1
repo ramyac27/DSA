@@ -1,0 +1,76 @@
+Write a program that takes an integer, then a string, then a char from the user and prints them in the screen.
+
+
+import java.util.Scanner;
+
+public class main{
+	public static void main(String[] args) {
+		
+		Scanner input1 = new Scanner(System.in);
+		int res1= input1.nextInt();
+		Scanner input2 = new Scanner(System.in);
+		String res2= input2.next();
+		Scanner input3 = new Scanner(System.in);
+		String res3= input3.next();
+		System.out.print(res1+" "+res2+" "+res3);
+	}
+}
+
+Write a program to check whether a triangle can be formed with the given values for the angles.
+
+public class main{
+	public static void main(String[] args) {
+		int num1=45;
+		int num2=45;
+		int num3=45;
+		
+		if(num1+num2+num3==180) {
+			System.out.print("Triangle can be formed");
+		}
+		
+		else {
+			System.out.print("Triangle cannot be formed");
+		}
+	}
+}
+
+Given mark of student, Print the Grade
+
+public class main{
+	public static void main(String[] args) {
+		int mark =95;
+		if(mark>=90) {
+			System.out.print("Grade A");
+		}
+		else if(mark>=80) {
+			System.out.print("Grade B");
+		}
+		else if(mark>=60) {
+			System.out.print("Grade C");
+		}
+		else if(mark>=35){
+			System.out.print("Fail");
+		}
+	}
+}
+
+Write a program using switch case which takes a value and prints the respective Size. 
+public class main{
+	public static void main(String[] args) {
+		int size = 29;
+		switch(size) {
+		     case(29):
+		    	 System.out.print("Small");
+		         break;
+		     case(30):
+		    	 System.out.print("Medium");
+		         break;
+		     case(42):
+		    	 System.out.print("Large");
+		     default:
+		    	 System.out.print("Invalid");
+		
+		}
+		
+	}
+}
