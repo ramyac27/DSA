@@ -1,0 +1,17 @@
+I/P = 123456789
+O/P = 5
+
+class Main {
+    public static void main(String[] args) {
+        int n = 123456789;
+        int count=0;
+        while(n>0){
+            int re = n%10;
+            if(re%2!=0){
+                count++;
+            }
+            n=n/10;
+        }
+        System.out.print(count);
+    }
+}
