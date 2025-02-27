@@ -1,0 +1,15 @@
+I/P = 3456789
+O/P = 3
+
+class Main {
+    public static void main(String[] args) {
+        int n=3456789;
+        while(n>0){
+            int re = n%10;
+            n=n/10;
+            if(n==0){
+                System.out.print(re);
+            }
+        }
+    }
+}
