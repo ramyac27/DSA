@@ -1,0 +1,13 @@
+I/P = 123456789
+O/P = 987654321
+
+class Main {
+    public static void main(String[] args) {
+        int n=123456789;
+        while(n>0){
+            int re = n%10;
+            System.out.print(re);
+            n=n/10;
+        }
+    }
+}
