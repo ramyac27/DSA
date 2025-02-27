@@ -1,0 +1,25 @@
+I/P = 123456
+O/P = 7 (1+6)
+
+class Solution
+{
+    public int corner_digitSum(int n)
+    {
+        int sum = 0;
+        int re_1=n%10;
+        if(re_1==n){
+            sum =n;
+        }
+        else{
+        int re_2=0;
+        while(n>0){
+            re_2=n%10;
+            n=n/10;
+            if(n==0){
+                sum = re_1+re_2;
+            }
+        }  
+        }
+        return sum;
+    }
+}
