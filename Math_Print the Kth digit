@@ -1,0 +1,27 @@
+Given two numbers A and B, find Kth digit from right of AB.
+
+Input:
+A = 3
+B = 3
+K = 1
+Output:
+7
+Explanation:
+33 = 27 and 1st digit from right is 7
+
+class Solution{
+    static long kthDigit(int A,int B,int K){
+        long power=(long)Math.pow(A,B);
+        long count =0;
+        long re=0;
+        while(power>0){
+            re = power %10;
+            power = power /10;
+            count++;
+            if(count==K){
+                break;
+            }
+        }
+        return re;        
+    }
+}
