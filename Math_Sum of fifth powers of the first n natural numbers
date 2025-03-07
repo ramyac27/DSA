@@ -1,0 +1,16 @@
+Input:
+N=2
+Output:
+33
+Explanation:
+The sum is calculated as 15+25=1+32=33.
+
+class Solution {
+    long sumOfFifthPowers(long N) {
+        long sum=0;
+        for(int i=1;i<=N;i++){
+            sum+=(long)Math.pow(i,5);
+        }
+        return sum;
+    }
+}
