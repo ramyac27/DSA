@@ -1,0 +1,16 @@
+nput: n = 9
+Output: 2
+Explanation: 1 and 4 are the only Perfect Squares less than 9. So, the Output is 2.
+
+class Solution {
+    static int countSquares(int n) {
+        int count=0;
+        long square_root=(long)Math.pow(n,0.5);
+        for(int i=1;i<=square_root;i++){
+            if((long)Math.pow(i,2)<n){
+                count++;
+            }
+        }
+        return count;
+    }
+}
