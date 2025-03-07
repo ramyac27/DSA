@@ -1,0 +1,9 @@
+Input: N = 2
+Output: 4 
+Explanation: abs|(12 + 22) - (1 + 2)2| = 4.
+
+class Solution {
+    static long squaresDiff(int N){
+        return Math.abs((N*(N+1)*(2*N+1))/6-(long)Math.pow((N*(N+1)/2),2));
+    }
+}
