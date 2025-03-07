@@ -1,0 +1,15 @@
+I/P -> A=5;B=10
+O/P -> A=10;B=5
+
+class Main {
+    public static void main(String[] args) {
+        int a=5;
+        int b=10;
+        int temp =a;
+        a=b;
+        b=temp;
+        System.out.println(a);
+        System.out.println(b);
+   
+    }
+}
