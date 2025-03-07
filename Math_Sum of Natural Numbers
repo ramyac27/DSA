@@ -1,0 +1,13 @@
+Input: n = 1
+Output: 1
+Explanation: For n = 1, the sum will be 1.
+
+class Solution {
+    public static int seriesSum(int n) {
+        int sum=0;
+        for(int i=1;i<=n;i++){
+            sum=sum+i;
+        }
+        return sum;
+    }
+}
