@@ -1,0 +1,15 @@
+Input: 200
+Output: 2
+Explanation: By reversing the digits of number, number will change into 2.
+
+class Solution {
+    public int reverseDigits(int n) {
+        int sum=0;
+        while(n>0){
+            int temp = n%10;
+            sum=(sum*10)+temp;
+            n=n/10;
+        }
+        return sum;
+    }
+}
