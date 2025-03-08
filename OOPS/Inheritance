@@ -1,0 +1,46 @@
+class Main {
+    public static void main(String[] args) {
+        Electric_bicycle x = new Electric_bicycle(12345272,57,"Blue");
+        System.out.println(x.getnumberplate());
+        System.out.println(x.getversion());
+        System.out.println(x.color);
+    }
+}
+
+class Bicycle{
+    private int numberplate;
+    private int version;
+    
+    public Bicycle(int numberplate,int version){
+        this.numberplate=numberplate;
+        this.version = version;
+    }
+    public int getnumberplate(){
+        return this.numberplate;
+    }
+    
+    public int getversion(){
+        return this.version;
+    }
+    
+    public void horn(){
+        System.out.println("Horn!!");
+    }
+}
+
+class Electric_bicycle extends Bicycle{
+    public String color;
+    public Electric_bicycle(int numberplate,int version, String color){
+        super(numberplate,version);
+        this.color = color;
+    }
+    
+}
+
+class Pedal_bicycle extends Bicycle{
+    public String color;
+    public Pedal_bicycle(int numberplate,int version,String color){
+        super(numberplate,version);
+        this.color=color;
+    }
+}
