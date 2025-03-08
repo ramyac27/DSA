@@ -1,0 +1,53 @@
+-> use inteface instead of abstarct, implemets instead of extends, doesn't hold any parameters inside interface method 
+
+class Main {
+    public static void main(String[] args) {
+        Electric_bicycle x = new Electric_bicycle(12345272,57,"Blue");
+        System.out.println(x.color);
+        x.speed(4);
+    }
+}
+
+interface Bicycle{
+    
+    void hasbasket();
+    
+
+    default void getnumberplate(){
+        System.out.print("number");
+    }
+    
+}
+
+class Electric_bicycle implements Bicycle{
+    public String color;
+    public Electric_bicycle(int numberplate,int version, String color){
+        this.color = color;
+    }
+    
+    @Override
+    public void hasbasket(){
+        System.out.println("no basket");
+    }
+    
+    public void speed(){
+        System.out.println("Increase speed by 2");
+    }
+    
+    public void speed(int input){
+        System.out.println("Increase speed by "+input);
+    }
+    
+}
+
+class Pedal_bicycle implements Bicycle{
+    public String color;
+    public Pedal_bicycle(int numberplate,int version,String color){
+        this.color=color;
+    }
+    
+    @Override
+    public void hasbasket(){
+        System.out.println("have basket");
+    }
+}
