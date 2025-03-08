@@ -1,3 +1,5 @@
+->more forms 
+
 class Main {
     public static void main(String[] args) {
         Electric_bicycle x = new Electric_bicycle(12345272,57,"Blue");
