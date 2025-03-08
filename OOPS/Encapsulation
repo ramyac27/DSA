@@ -1,4 +1,5 @@
 Provides access whenever it is needed with getters and setters method, which protect data from unknown users
+-> Getters & Setters
 
 class Main {
     public static void main(String[] args) {
