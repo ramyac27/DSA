@@ -1,0 +1,39 @@
+Provides access whenever it is needed with getters and setters method, which protect data from unknown users
+
+class Main {
+    public static void main(String[] args) {
+        Amazonaccount print = new Amazonaccount();
+        Amazonaccount ritish = new Amazonaccount("ritish",100);
+        ritish.setamazonpay_balance(1000);
+        Amazonaccount kavitha = new Amazonaccount(1000);
+        kavitha.setamazonpay_balance(100);
+        System.out.println(ritish.getamazonpay_balance());
+        System.out.println(kavitha.getamazonpay_balance());
+        
+    }
+}
+
+class Amazonaccount{
+    private String account_name;
+    private int amazonpay_balance;
+    
+    public int getamazonpay_balance(){
+        return this.amazonpay_balance;
+    }
+    
+    public void setamazonpay_balance(int amazonpay_balance){
+        this.amazonpay_balance=amazonpay_balance;
+    }
+    
+    public Amazonaccount(){
+        System.out.println("called Constructor");
+    }
+    
+    public Amazonaccount(String name,int balance){
+        this.account_name=name;
+        this.amazonpay_balance=balance;
+    }
+    public Amazonaccount(int balance){
+        this.amazonpay_balance=balance;
+    }
+}
