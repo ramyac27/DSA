@@ -1,0 +1,30 @@
+class Main {
+    public static void main(String[] args) {
+        Amazonaccount print = new Amazonaccount();
+        Amazonaccount ramya = new Amazonaccount("ramya");
+        Amazonaccount ritish = new Amazonaccount("ritish",100);
+        Amazonaccount kavitha = new Amazonaccount(1000);
+        System.out.println(ramya.account_name);
+        System.out.println(ritish.amazonpay_balance);
+        System.out.println(kavitha.amazonpay_balance);
+        
+    }
+}
+
+class Amazonaccount{
+    String account_name;
+    int amazonpay_balance;
+    public Amazonaccount(){
+        System.out.println("called Constructor");
+    }
+    public Amazonaccount(String name){
+        this.account_name= name;
+    }
+    public Amazonaccount(String name,int balance){
+        this.account_name=name;
+        this.amazonpay_balance=balance;
+    }
+    public Amazonaccount(int balance){
+        this.amazonpay_balance=balance;
+    }
+}
