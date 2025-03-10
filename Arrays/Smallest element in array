@@ -1,0 +1,12 @@
+class Main {
+    public static void main(String[] args) {
+        int[] x ={1,2,3,4,5};
+        int small=x[0];
+        for(int i=1;i<x.length;i++){
+            if(x[i]<small){
+                small=x[i];
+            }
+        }
+        System.out.print(small);
+    }
+}
