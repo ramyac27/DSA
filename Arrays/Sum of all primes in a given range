@@ -1,0 +1,25 @@
+import java.util.*;
+
+class Main {
+    public static void main(String[] args) {
+        int L=15;
+        int R=25;
+        int[] arr = new int [R+1];
+        Arrays.fill(arr,1);
+        int sum=0;
+        for(int i=2;i<=Math.sqrt(R);i++){
+            if(arr[i]==1){
+                for(int j = i*2;j<=R;j=j+i){
+                    arr[j]=0;
+                }
+            }
+        }
+        
+        for(int i=L;i<=R;i++){
+            if(arr[i]==1){
+                sum=sum+i;
+            }
+        }
+        System.out.print(sum);
+    }
+}
