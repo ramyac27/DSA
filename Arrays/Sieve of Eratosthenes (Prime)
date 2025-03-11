@@ -1,0 +1,33 @@
+Given a number N, calculate the prime numbers up to N using Sieve of Eratosthenes.  
+
+Input:
+N = 10
+
+Output:
+2 3 5 7
+
+Explanation:
+Prime numbers less than equal to N 
+are 2 3 5 and 7.
+
+class Solution{
+    static ArrayList<Integer> sieveOfEratosthenes(int N){
+        ArrayList<Integer> ans = new ArrayList<>();
+        int[] arr1= new int[N+1];
+        Arrays.fill(arr1,1);
+        for(int i=2;i<=Math.sqrt(N);i++){
+            if(arr1[i]==1){
+                for(int j=i*2;j<=N;j=j+i){
+                    arr1[j]=0;
+                }
+            }
+        }
+        
+        for(int i=2;i<=N;i++){
+            if(arr1[i]==1){
+                ans.add(i);
+            }
+        }
+        return ans;
+    }
+}
