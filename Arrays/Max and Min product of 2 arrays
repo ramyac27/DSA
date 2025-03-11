@@ -1,0 +1,19 @@
+class Solution {
+    public long findMultiplication(int[] arr1, int[] arr2) {
+        int max1=Integer.MIN_VALUE;
+        int min1=Integer.MAX_VALUE;
+        for(int i=0;i<arr1.length;i++){
+            if(arr1[i]>max1){
+                max1=arr1[i];
+            }
+        }
+        
+        for(int i=0;i<arr2.length;i++){
+            if(arr2[i]<min1){
+                min1=arr2[i];
+            }
+        }
+        
+        return max1*min1;
+    }
+}
