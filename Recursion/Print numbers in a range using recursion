@@ -1,0 +1,17 @@
+O/P - 5 4 3 2 1 
+
+class Main {
+    
+   public static void printn(int n){
+        if(n==0){
+            return;
+        }
+        else{
+            System.out.print(n+" ");
+            printn(n-1);
+        }
+    }
+    public static void main(String[] args) {
+        printn(5);
+    }
+}
