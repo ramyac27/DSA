@@ -15,3 +15,24 @@ class Main {
         printn(5);
     }
 }
+
+
+O/P = 1 2 3 4 5
+
+class Solution {
+    
+    public void printn(int n){
+        if(n==0){
+            return;
+        }
+        else{
+            printn(n-1);
+            System.out.print(n+" ");
+        }
+    }
+
+    public void printNos(int n) {
+        printn(n);
+    }
+    
+}
