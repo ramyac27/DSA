@@ -1,0 +1,15 @@
+I/P = 9000000
+O/P = 7 
+
+public class main{
+	
+	public static int count_zero(int n) {
+		if(n%10==n) {
+			return 1;
+		}
+		return 1+count_zero(n/10);
+	}
+	public static void main(String[] args) {
+		System.out.print(count_zero(9000000));
+	}
+}
