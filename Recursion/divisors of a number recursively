@@ -1,0 +1,18 @@
+I/p =6
+O/p = 1 2 3 6
+
+public class main{
+	
+	public static void divisors_num(int n, int i) {
+		   if(i>n) {
+			   return;
+		   }
+		   if(n%i==0) {
+			   System.out.print(i+" ");
+		   }
+		   divisors_num(n,i+1);
+	}
+	public static void main(String[] args) {
+		divisors_num(6,1);
+	}
+}
