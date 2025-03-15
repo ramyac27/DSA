@@ -1,0 +1,16 @@
+public class main{
+	
+	public static void print_array(int[] arr,int i) {
+		   if(i>=arr.length) {
+			   return;
+		   }
+		   else {
+			   System.out.print(arr[i]+" ");
+			   print_array(arr,i+1);
+		   }
+	}
+	public static void main(String[] args) {
+		int[] a = {1,2,3,4,5};
+		print_array(a,0);
+	}
+}
