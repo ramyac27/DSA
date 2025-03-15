@@ -1,0 +1,24 @@
+Bubble sort - moving the unsorted maximum element to the correct position using adjacent swapping 
+
+I/P = {0,4,5,23,89,1,7}
+O/P = 0 1 4 5 7 23 89
+
+
+public class main{
+	public static void main(String[] args) {
+		int[] arr = {0,4,5,23,89,1,7};
+		for(int i=0;i<arr.length-1;i++) {
+			for(int j=0;j<arr.length-1;j++) {
+				if(arr[j]>arr[j+1]) {
+					int temp = arr[j];
+					arr[j]=arr[j+1];
+					arr[j+1]=temp;
+				}
+			}
+		}
+		
+		for(int i=0;i<arr.length;i++) {
+			System.out.print(arr[i]+" ");
+		}
+	}
+}
