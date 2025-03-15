@@ -1,0 +1,18 @@
+I/p = {1,2,3,4,5,6}
+o/p = 1+2+3+4+5+6 = 21
+
+public class main{
+	
+	public static int sum_array(int arr[], int i) {
+		   if(i>=arr.length) {
+			   return 0;
+		   }
+		   else {
+			   return arr[i]+sum_array(arr,i+1);
+		   }
+	}
+	public static void main(String[] args) {
+		int[] a = {1,2,3,4,5,6};
+		System.out.print(sum_array(a,0));
+	}
+}
