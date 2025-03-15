@@ -1,0 +1,21 @@
+I/P = 9
+O/P = -1 (element is not there)
+
+public class main{
+	
+	public static int print_array(int arr[], int s, int i) {
+		   if(i>=arr.length) {
+			   return -1;
+		   }
+		   if(arr[i]==s) {
+			   return i;
+		   }
+		   else {
+			   return print_array(arr,s,i+1);
+		   }
+	}
+	public static void main(String[] args) {
+		int[] a = {1,2,3,4,5};
+		System.out.print(print_array(a,9,0));
+	}
+}
