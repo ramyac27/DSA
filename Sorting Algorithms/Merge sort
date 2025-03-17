@@ -1,0 +1,72 @@
+public class Arrays{
+	
+	public static void mergesort(int[] arr, int low, int high) {
+		
+		if(low<high) {
+			
+			int mid = (low+high)/2;
+			
+			mergesort(arr,low,mid);
+			mergesort(arr,mid+1,high);
+			
+			merge(arr,low,mid,high);
+		}
+	}
+	
+	public static void merge(int[] arr, int low, int mid, int high) {
+		
+		int n1=mid-low+1;
+		int n2=high-mid;
+		
+		int lArr[] = new int[n1];
+		int rArr[] = new int[n2];
+		
+		for(int x=0;x<n1;x++) {
+			lArr[x]=arr[low+x];
+		}
+		
+		for(int x=0;x<n2;x++) {
+			rArr[x]=arr[mid+1+x];
+		}
+		
+		int i=0;
+		int j=0;
+		int k=low;
+		
+		
+		while(i<n1 && j<n2) {
+			if(lArr[i]<=rArr[j]) {
+				arr[k]=lArr[i];
+			    i++;
+			}
+			    
+			else if(rArr[j]<=lArr[i]){
+				arr[k]=rArr[j];
+				j++;
+			}
+			k++;
+		}
+		
+		while(i<n1) {
+			arr[k]=lArr[i];
+			i++;
+			k++;		
+		}
+		
+		while(j<n2) {
+			arr[k]=rArr[j];
+			j++;
+			k++;
+		}
+	}
+	
+	
+	public static void main(String[] args) {
+		int arr[]= {5,9,10,7,2,1,0};
+		mergesort(arr,0,arr.length-1);
+		
+		for (int n:arr) {
+			System.out.print(n+" ");
+		}
+	}
+}
