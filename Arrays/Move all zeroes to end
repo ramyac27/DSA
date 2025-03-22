@@ -1,0 +1,43 @@
+Input: arr[] = [1, 2, 0, 4, 3, 0, 5, 0]
+Output: [1, 2, 4, 3, 5, 0, 0, 0]
+Explanation: There are three 0s that are moved to the end.
+
+Using extra space by creating new array 
+
+class Solution {
+    void pushZerosToEnd(int[] arr) {
+        int[] b = new int[arr.length];
+        int j=0;
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]!=0){
+                b[j]=arr[i];
+                j++;
+            }
+        }
+        
+        for(int i=0;i<j;i++){
+            arr[i]=b[i];
+        }
+        for(int i=j;i<arr.length;i++){
+            arr[i]=0;
+        }
+    }
+}
+
+Without using extra space 
+
+class Solution {
+    void pushZerosToEnd(int[] arr) {
+        int j=0;
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]!=0){
+                arr[j]=arr[i];
+                j++;
+            }
+        }
+        
+        for(int i=j;i<arr.length;i++){
+            arr[i]=0;
+        }
+    }
+}
