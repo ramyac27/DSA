@@ -1,0 +1,36 @@
+Given two arrays a[] and b[], the task is to find the number of elements in the union between these two arrays.
+
+public class Arrays{
+	
+	public static int unionArray(int[] a, int[] res,int k) {
+		for(int i=0;i<a.length;i++) {
+			int flag =1;
+			for(int j=0;j<k;j++) {
+				if(a[i]!=res[j]) {
+					flag=0;
+					break;
+				}
+			}
+			if(flag==1) {
+				res[k]=a[i];
+				k++;
+			}
+		}
+		return k;
+	}
+	public static void main(String[] args) {
+		int a[] = {1,2,2,3,4,4,5,6,6,7,7,8,9};
+        int b[] = {10,10,7,4,3,2,11,12,12,14};
+        int n = a.length;
+        int m = b.length;
+        int k=0;
+        int [] res = new int[n+m];
+        k = unionArray(a,res,k);
+        k = unionArray(b,res,k);
+        
+        for(int i=0;i<k;i++) {
+        	System.out.print(res[i]+" ");
+        }
+        
+}
+}
