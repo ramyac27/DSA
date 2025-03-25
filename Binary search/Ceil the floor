@@ -1,0 +1,84 @@
+Given an unsorted array arr[] of integers and an integer x, find the floor and ceiling of x in arr[].
+
+Floor of x is the largest element which is smaller than or equal to x. Floor of x doesn’t exist if x is smaller than smallest element of arr[].
+Ceil of x is the smallest element which is greater than or equal to x. Ceil of x doesn’t exist if x is greater than greatest element of arr[].
+
+Return an array of integers denoting the [floor, ceil]. Return -1 for floor or ceiling if the floor or ceiling is not present.
+
+Input: x = 7 , arr[] = [5, 6, 8, 9, 6, 5, 5, 6]
+Output: 6, 8
+Explanation: Floor of 7 is 6 and ceil of 7 is 8.
+
+Brute force approach 
+
+class Solution {
+    public int getfloor(int x, int[] arr){
+        for(int i=arr.length-1;i>=0;i--){
+            if(arr[i]==x){
+                return arr[i];
+            }
+            if(arr[i]<x){
+                return arr[i];
+            }
+        }
+        return -1;
+    }
+    
+    public int getceil(int x,int[] arr){
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]==x){
+                return arr[i];
+            }
+            if(arr[i]>x){
+                return arr[i];
+            }
+        }
+        return -1;
+    }
+    public int[] getFloorAndCeil(int x, int[] arr) {
+        Arrays.sort(arr);
+        int[] ans = new int[2];
+        ans[0]=getfloor(x,arr);
+        ans[1]=getceil(x,arr);
+        return ans;
+        
+    }
+}
+
+Binary search 
+class Solution {
+    public int[] getFloorAndCeil(int x, int[] arr) {
+      int n = arr.length;
+
+// LOWER BOUND
+        int low=0,high=n-1;
+        int ans[] = {-1,-1};
+        Arrays.sort(arr);
+        
+        while(low<=high){
+            int mid = (low+high)/2;
+            if(arr[mid]<=x){
+                ans[0] = arr[mid];
+                low = mid+1;
+            }else{
+                high = mid-1;
+            }
+        }
+
+//UPPER BOUND 
+        low= 0;
+        high = n-1;
+        while(low<=high){
+            int mid = (low+high)/2;
+            if(arr[mid]>=x){
+                ans[1] = arr[mid];
+                high = mid-1;
+            }else{
+                low = mid+1;
+            }
+        }
+        
+        return ans;
+        
+    }
+}
