@@ -1,0 +1,52 @@
+You are given an array with unique elements of stalls[], which denote the position of a stall. You are also given an integer k which denotes the number of aggressive cows. Your task is to assign stalls to k cows such that the minimum distance between any two of them is the maximum possible.
+
+Input: stalls[] = [1, 2, 4, 8, 9], k = 3
+Output: 3
+Explanation: The first cow can be placed at stalls[0], 
+the second cow can be placed at stalls[2] and 
+the third cow can be placed at stalls[3]. 
+The minimum distance between cows, in this case, is 3, which also is the largest among all possible ways.
+
+class Solution {
+    public static boolean count_cows(int[] stalls,int cows, int distance){
+        int count_cows =1;
+        int last =stalls[0];
+        for(int i=1;i<stalls.length;i++){
+            if(stalls[i]-last>=distance){
+                count_cows++;
+                last=stalls[i];
+            }
+        }
+        if(count_cows>=cows){
+            return true;
+        }
+        return false;
+    }
+    public static int aggressiveCows(int[] stalls, int k) {
+        Arrays.sort(stalls);
+        int n =stalls.length;
+        int left=0;
+        int right = stalls[n-1]-stalls[0];
+        for(int i=0;i<stalls.length;i++){
+            left=Math.min(left,stalls[i]);
+        }
+        if(k==2){
+            return right;
+        }
+        
+        int ans =-1;
+        while(left<=right){
+            int mid =(left+right)/2;
+            boolean countofcows=count_cows(stalls,k,mid);
+            if(countofcows){
+                ans=mid;
+                left=mid+1;
+            }
+            else{
+                right=mid-1;
+            }
+        }
+        return ans;
+        
+    }
+}
