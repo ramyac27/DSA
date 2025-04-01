@@ -1,0 +1,26 @@
+Input: arr = [5, 1, 2, 3, 4]
+Output: 1
+Explanation: The given array is 5 1 2 3 4. The original sorted array is 1 2 3 4 5. We can see that the array was rotated 1 times to the right.
+
+class Solution {
+    public int findKRotation(List<Integer> arr) {
+        int n = arr.size();
+        int left =0;
+        int right = n-1;
+        while(left<=right){
+            int mid = (left+right)/2;
+            int i =(mid-1+n)%n;
+            int j =(mid+1)%n;
+            if(arr.get(mid)<arr.get(i) && arr.get(mid)<arr.get(j)){
+                  return mid;
+            } 
+            if(arr.get(mid)<arr.get(right)){
+               right =mid-1;
+            }
+            else{
+                left = mid+1;
+            }
+        }
+        return 0;
+    }
+}
