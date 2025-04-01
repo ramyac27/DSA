@@ -1,0 +1,45 @@
+There are n trees in a forest. The heights of the trees is stored in array tree[], where tree[i] denotes the height of the ith tree in the forest. If the ith tree is cut at a height H, then the wood collected is tree[i] - H, provided tree[i] > H. If the total woods that needs to be collected is exactly equal to k, find the height H at which every tree should be cut (all trees have to be cut at the same height). If it is not possible then return -1 else return H.
+
+n = 5, k = 4
+tree[] = {2, 3, 6, 2, 4}
+Output: 3
+Explanation: Wood collected by cutting trees
+at height 3 = 0 + 0 + (6-3) + 0 + (4-3) = 4
+hence 3 is to be subtracted from all numbers.
+Since 2 is lesser than 3, nothing gets
+subtracted from it.
+
+class Solution
+{
+    static int check_height(int tree[],int k){
+        int wood=0;
+        for(int i=0;i<tree.length;i++){
+            if (tree[i]>k){
+                wood = wood +(tree[i]-k);
+            }
+        }
+        return wood;
+    }
+    static int find_height(int tree[], int n, int k)
+    {
+        int left=0;
+        int right=0;
+        for(int i=0;i<tree.length;i++){
+            right =Math.max(right,tree[i]);
+        }
+        while(left<=right){
+            int mid = (left+right)/2;
+            int wood = check_height(tree,mid);
+            if(wood==k){
+                return mid;
+            }
+            else if(wood>k){
+                left =mid+1;
+            }
+            else{
+                right =mid-1;
+            }
+        }
+        return -1;
+    }
+}
