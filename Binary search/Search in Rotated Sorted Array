@@ -1,0 +1,37 @@
+Input: arr[] = [5, 6, 7, 8, 9, 10, 1, 2, 3], key = 3
+Output: 8
+Explanation: 3 is found at index 8.
+
+class Solution {
+    int search(int[] arr, int key) {
+        // Complete this function
+        int n = arr.length;
+        int left =0;
+        int right = n-1;
+        int ans =-1;
+        while(left<=right){
+            int mid=(left+right)/2;
+            if(arr[mid]==key){
+                ans=mid;
+            }
+            if(arr[left]<=arr[mid]){
+                if(key>=arr[left] && key<=arr[mid]){
+                    right =mid-1;
+                }
+                else{
+                    left=mid+1;
+                }
+            }
+            else{
+                if(key<=arr[right] && key>=arr[mid]){
+                    left = mid+1;
+                }
+                else{
+                    right=mid-1;
+                }
+            }
+        }
+        return ans;
+        
+    }
+}
