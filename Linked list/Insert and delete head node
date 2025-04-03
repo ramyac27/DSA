@@ -1,0 +1,59 @@
+I/P = 4 2345
+O/P = 12345
+      2345
+
+import java.util.Scanner;
+
+class Node{
+	int data;
+	Node next;
+}
+
+public class main{
+	public static void main(String[] args) {
+		Node head = null;
+		Node temp = null;
+		Scanner scanner = new Scanner(System.in);
+		int n = scanner.nextInt();
+		while(n>0) {
+			if(head==null) {
+				head = new Node();
+				head.data=scanner.nextInt();
+				head.next=null;
+				temp=head;
+			}
+			else {
+				Node temp1 = new Node();
+				temp1.data = scanner.nextInt();
+				temp1.next=null;
+				temp.next=temp1;
+				temp=temp1;
+			}
+			n--;
+		}
+		
+		int new_node =1;
+		Node newnode = new Node();
+		newnode.data=new_node;
+		newnode.next=head;
+		head=newnode;
+		
+		temp=head;
+		while(temp!=null) {
+			System.out.print(temp.data);
+			temp=temp.next;
+		}
+		
+		System.out.println();
+		
+		head =head.next;
+		
+		temp=head;
+		while(temp!=null) {
+			System.out.print(temp.data);
+			temp=temp.next;
+		}
+		
+		
+	}
+}
