@@ -1,0 +1,55 @@
+I/P = 12456
+O/P = 123456
+
+import java.util.Scanner;
+
+class Node{
+	int data;
+	Node next;
+}
+
+public class main{
+	public static void main(String[] args) {
+		Node head = null;
+		Node temp = null;
+		Scanner scanner = new Scanner(System.in);
+		int n = scanner.nextInt();
+		while(n>0) {
+			if(head==null) {
+				head = new Node();
+				head.data=scanner.nextInt();
+				head.next=null;
+				temp=head;
+			}
+			else {
+				Node temp1 = new Node();
+				temp1.data = scanner.nextInt();
+				temp1.next=null;
+				temp.next=temp1;
+				temp=temp1;
+			}
+			n--;
+		}
+		
+		int new_data =3;
+		int data =4;
+		Node prev_node =null;
+		Node curr_node = head;
+		while(curr_node.data!=data && curr_node!=null) {
+			prev_node=curr_node;
+			curr_node =curr_node.next;
+		}
+		
+		Node new_node = new Node();
+		new_node.data=new_data;
+		prev_node.next=new_node;
+		new_node.next=curr_node;
+		
+		temp=head;
+		while(temp!=null) {
+			System.out.print(temp.data);
+			temp=temp.next;
+		}
+		
+	}
+}
