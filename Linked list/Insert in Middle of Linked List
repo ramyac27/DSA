@@ -14,6 +14,27 @@ Explanation:
 The new element is inserted after the current middle element in the linked list and Hence, the output is 10->20->30->40->50.
 
 
+class Solution {
+    int getMiddle(Node head) {
+        Node temp =head;
+        int count=0;
+        while(temp!=null){
+            temp=temp.next;
+            count++;
+        }
+    count=(count/2)+1;
+    int count1=0;
+    temp=head;
+    Node curr=null;
+    while(temp!=null && count1!=count){
+        curr=temp;
+        temp=temp.next;
+        count1++;
+    }
+    return curr.data;
+    }
+}
+
 
 class Solution {
     public Node insertInMiddle(Node head, int x) {
