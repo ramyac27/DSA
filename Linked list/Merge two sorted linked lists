@@ -1,0 +1,47 @@
+Given the head of two sorted linked lists consisting of nodes respectively. The task is to merge both lists and return the head of the sorted merged list.
+
+Examples:
+
+Input: head1 = 5 -> 10 -> 15 -> 40, head2 = 2 -> 3 -> 20
+Output: 2 -> 3 -> 5 -> 10 -> 15 -> 20 -> 40
+
+class Solution {
+    Node sortedMerge(Node head1, Node head2) {
+    Node temp1, temp2, temp3,head3;
+    temp1=head1;
+    temp2=head2;
+    if(head1.data<head2.data){
+       head3=head1;
+       temp3=head1;
+       temp1=temp1.next;
+    }
+    else{
+        head3=head2;
+      temp3=head2;
+      temp2=head2.next;
+    }
+    while(temp1!=null && temp2!=null){
+        if(temp1.data<temp2.data){
+            temp3.next=temp1;
+            temp3=temp3.next;
+            temp1=temp1.next;
+        }
+        else{
+            temp3.next=temp2;
+            temp3=temp3.next;
+            temp2=temp2.next;
+        }
+    }
+    if(temp1!=null){
+        temp3.next=temp1;
+        temp1=temp1.next;
+    }
+    else if(temp2!=null){
+        temp3.next=temp2;
+        temp2=temp2.next;
+    }
+    
+    return head3;
+           
+    }
+}
