@@ -1,0 +1,109 @@
+Given a singly linked list of size N containing only English Alphabets. Your task is to complete the function, that arranges the consonants and vowel nodes of the list it in such a way that all the vowels nodes come before the consonants while maintaining the order of their arrival.
+
+Input Format
+
+6
+
+a e g h i m
+
+Constraints
+
+1 <= T <= 100
+
+1 <= N <= 100
+
+Output Format
+
+a e i g h m
+
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+class Node {
+    char data;
+    Node next;
+
+    Node(char data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+
+public class Solution {
+
+    // Function to check if a character is a vowel
+    static boolean isVowel(char ch) {
+        ch = Character.toLowerCase(ch);
+        return (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u');
+    }
+
+    // Rearranges vowels and consonants while preserving order
+    public static Node rearrangeVowelsAndConsonants(Node head) {
+        if (head == null || head.next == null) return head;
+
+        Node vowelDummy = new Node('0');
+        Node consonantDummy = new Node('0');
+        Node vowelTail = vowelDummy;
+        Node consonantTail = consonantDummy;
+
+        Node current = head;
+
+        while (current != null) {
+            if (isVowel(current.data)) {
+                vowelTail.next = current;
+                vowelTail = vowelTail.next;
+            } else {
+                consonantTail.next = current;
+                consonantTail = consonantTail.next;
+            }
+            current = current.next;
+        }
+
+        // Link vowels to consonants and terminate the final node
+        vowelTail.next = consonantDummy.next;
+        consonantTail.next = null;
+
+        return vowelDummy.next;
+    }
+
+    // Utility function to print the linked list
+    public static void printList(Node head) {
+        while (head != null) {
+            System.out.print(head.data + " ");
+            head = head.next;
+        }
+        System.out.println();
+    }
+
+    // Utility function to build a linked list from a char array
+    public static Node buildList(char[] arr) {
+        if (arr.length == 0) return null;
+        Node head = new Node(arr[0]);
+        Node current = head;
+        for (int i = 1; i < arr.length; i++) {
+            current.next = new Node(arr[i]);
+            current = current.next;
+        }
+        return head;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner =new Scanner(System.in);
+        int n = scanner.nextInt();
+        
+        char[] input= new char[n];
+        
+        for(int i=0;i<n;i++){
+            input[i]=scanner.next().charAt(0);
+        }
+        Node head = buildList(input);
+
+        head = rearrangeVowelsAndConsonants(head);
+
+        printList(head);
+    }
+}
