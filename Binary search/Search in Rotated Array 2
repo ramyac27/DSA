@@ -1,0 +1,31 @@
+Given a sorted and rotated array arr and a target key k which is rotated at some point, and may contain duplicates and given an element key. Check whether the key is present in the array or not.
+
+Examples:
+
+Input: arr[] = [2, 5, 6, 0, 0, 1, 2], k = 0
+Output: true
+Explanation: 0 is found at index 3.
+
+Input: arr[] = [2, 5, 6, 0, 0, 1, 2], k = 3
+Output: false
+Explanation: There is no element that has value 3.
+
+class Solution {
+    public static boolean Search(int[] arr, int k) {
+        int left=0;
+        int right=arr.length-1;
+        while(left<=right){
+            int mid=(left+right)/2;
+            if(arr[mid]==k){
+                return true;
+            }
+            else if(arr[mid]<k){
+               left=mid+1;
+            }
+            else{
+                right=mid-1;
+            }
+        }
+        return false;
+    }
+}
