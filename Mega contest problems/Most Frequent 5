@@ -1,0 +1,58 @@
+Given a string s of lowercase alphabets. The task is to find the maximum occurring character in the string s.
+
+Input Format
+
+s = "geeksforgeeks"
+
+Constraints
+
+0<=n<=100
+
+Output Format
+
+e
+
+Explanation - e has occurred 4 times in the string which is the maximum, so e is the string which has maximum occurence.
+
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+         Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+
+        HashMap<Character,Integer> ans = new HashMap<Character,Integer>();
+        
+        int count=0;
+        for(int i=0;i<s.length();i++){
+            char ch1= s.charAt(i);
+            for(int j=0;j<s.length();j++){
+                char ch2=s.charAt(j);
+                if(ch1==ch2){
+                    count++;
+                }
+            }
+            ans.put(ch1,count);
+            count=0;
+        }
+        
+        char maxChar = ' ';
+        int maxCount = 0;
+
+        for (Map.Entry<Character, Integer> entry : ans.entrySet()) {
+            if (entry.getValue() > maxCount) {
+                maxCount = entry.getValue();
+                maxChar = entry.getKey();
+            }
+        }
+
+        System.out.println(maxChar);
+    }
+}
