@@ -1,0 +1,123 @@
+class Myqueue{
+	int capacity;
+	int[] QueueArray;
+	int front;
+	int rear;
+
+
+public Myqueue(int capacity) {
+	this.capacity=capacity;
+	this.QueueArray = new int [capacity];
+	this.front =0;
+	this.rear =0;
+}
+
+public boolean isfull(){
+	return rear==capacity;
+}
+
+public boolean isempty() {
+	return rear==0;
+}
+
+public boolean enqueue(int data) {
+	if(isfull()) {
+		System.out.println("queue is full");
+		return false;
+	}
+	else {
+		QueueArray[rear]=data;
+		rear++;
+		return true;
+	}
+}
+
+
+public int dequeue() {
+	if(isempty()) {
+		System.out.println("queue is empty");
+		return -1;
+	}
+	else {
+		int x =QueueArray[front];
+		for(int i=front;i<rear-1;i++) {
+			QueueArray[i]=QueueArray[i+1];
+		}
+		rear--;
+		return x;		
+	}
+}
+
+public int peak() {
+	if(isempty()) {
+		System.out.println("queue is emoty");
+		return -1;
+	}
+	else {
+		return QueueArray[front];
+	}
+}
+
+public void display() {
+	if(isempty()) {
+		System.out.println("queue is empty");
+	}
+	else {
+		for(int i=0;i<capacity;i++) {
+			System.out.print(QueueArray[i]+" ");
+		}
+	}
+}
+
+}
+
+
+public class main{
+	public static void main(String[] args) {
+		Myqueue QueueArray = new Myqueue(5);
+		QueueArray.enqueue(1);
+		QueueArray.enqueue(2);
+		QueueArray.enqueue(3);
+		QueueArray.enqueue(4);
+		QueueArray.enqueue(5);
+		
+		QueueArray.dequeue();
+		
+		System.out.println(QueueArray.isfull());
+		
+		System.out.println(QueueArray.peak());
+		
+		QueueArray.dequeue();
+		QueueArray.dequeue();
+		QueueArray.dequeue();
+		QueueArray.dequeue();
+		
+		System.out.println(QueueArray.isempty());
+		
+		QueueArray.enqueue(6);
+		
+		System.out.println(QueueArray.isfull());
+		
+		System.out.println(QueueArray.isempty());
+		
+		System.out.println(QueueArray.peak());
+		
+		QueueArray.enqueue(7);
+		QueueArray.enqueue(8);
+		QueueArray.enqueue(9);
+		QueueArray.enqueue(10);
+		
+		QueueArray.display();
+		
+	}
+}
+
+
+O/P 
+false
+2
+true
+false
+false
+6
+6 7 8 9 10 
