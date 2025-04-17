@@ -1,0 +1,27 @@
+I/P = 12345
+O/P = 12345
+
+class Queue {
+    Stack<Integer> input = new Stack<Integer>();
+    Stack<Integer> output = new Stack<Integer>();
+
+    int dequeue() {
+        if(input.isEmpty()){
+            return -1;
+        }
+        return input.pop();
+        
+    }
+
+    void enqueue(int x) {
+        while(!input.isEmpty()){
+            output.add(input.pop());
+        }
+        
+        input.add(x);
+        
+        while(!output.isEmpty()){
+            input.add(output.pop());
+        }
+    }
+}
