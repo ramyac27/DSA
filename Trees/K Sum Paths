@@ -1,0 +1,40 @@
+https://www.geeksforgeeks.org/problems/k-sum-paths/1
+
+K Sum Paths
+
+Given a binary tree and an integer k, determine the number of downward-only paths where the sum of the node values in the path equals k. A path can start and end at any node within the tree but must always move downward (from parent to child).
+
+class Solution {
+    public static void countpath(Node root,int k,int curr,ArrayList<Integer>list,ArrayList<ArrayList<Integer>>ans){
+        list.add(root.data);
+        if(curr+root.data==k){
+            ans.add(new ArrayList<Integer>(list));
+        }
+        if(root.left!=null){
+            countpath(root.left,k,curr+root.data,list,ans);
+        }
+        if(root.right!=null){
+            countpath(root.right,k,curr+root.data,list,ans);
+        }
+        list.remove(list.size()-1);
+    }
+    public static void findPaths(Node root, int k, ArrayList<ArrayList<Integer>> ans) {
+
+        countpath(root, k, 0, new ArrayList<>(), ans);
+
+        if(root.left!=null){
+             findPaths(root.left, k, ans);
+        }
+        if(root.right!=null){
+             findPaths(root.right, k, ans);
+        }
+    }
+
+    public int sumK(Node root, int k) {
+        ArrayList<Integer> list = new ArrayList();
+        ArrayList<ArrayList<Integer>> ans = new ArrayList<>();
+        findPaths(root,k,ans);
+        return ans.size();
+        
+    }
+}
