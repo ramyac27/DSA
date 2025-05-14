@@ -1,0 +1,71 @@
+https://www.geeksforgeeks.org/problems/top-view-of-binary-tree/1
+
+Top View of Binary Tree
+
+You are given a binary tree, and your task is to return its top view. The top view of a binary tree is the set of nodes visible when the tree is viewed from the top.
+
+
+Input: root[] = [1, 2, 3, N, 4, N, N, N, 5, N, 6]
+       1
+     /   \
+    2     3
+     \   
+      4
+       \
+        5
+         \
+          6
+Output: [2, 1, 3, 6]
+Explanation: Node 1 is the root and visible.
+Node 2 is the left child and visible from the left side.
+Node 3 is the right child and visible from the right side.
+Nodes 4, 5, and 6 are vertically aligned, but only the lowest node 6 is visible from the top view. Thus, the top view is 2 1 3 6.
+
+
+class Pair{
+    Node node;
+    int val;
+        
+    Pair(Node node,int val){
+        this.node = node;
+        this.val = val;
+    }
+}
+
+
+class Solution {
+    // Function to return a list of nodes visible from the top view
+    // from left to right in Binary Tree.
+    static ArrayList<Integer> topView(Node root) {
+        ArrayList<Integer> result = new ArrayList<>();
+        if(root==null){
+            return result;
+        }
+        TreeMap<Integer,Integer> map = new TreeMap<>();
+        Queue<Pair> q = new LinkedList<>();
+        q.add(new Pair(root,0));
+        
+        while(!q.isEmpty()){
+            Pair curr = q.poll();
+            Node curr_node = curr.node;
+            int curr_value = curr.val;
+            
+            if(!map.containsKey(curr_value)){
+                map.put(curr_value,curr_node.data);
+            }
+            
+            if(curr_node.left!=null){
+                q.add(new Pair(curr_node.left,curr_value-1));
+            }
+            
+            if(curr_node.right!=null){
+                q.add(new Pair(curr_node.right,curr_value+1));
+            }
+        }
+        
+        for(Map.Entry<Integer,Integer> entry: map.entrySet()){
+            result.add(entry.getValue());
+        }
+        return result;
+    }
+}
