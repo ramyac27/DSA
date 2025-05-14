@@ -1,0 +1,39 @@
+https://www.geeksforgeeks.org/problems/kth-ancestor-in-a-tree/1
+
+Kth Ancestor in a Tree
+
+Given a binary tree of size  n, a node, and a positive integer k., Your task is to complete the function kthAncestor(), the function should return the kth ancestor of the given node in the binary tree. If there does not exist any such ancestor then return -1.
+Note:
+1. It is guaranteed that the node exists in the tree.
+2. All the nodes of the tree have distinct values.
+
+
+class Solution {
+    public boolean getpath(Node root,int node,ArrayList<Integer> result){
+        if(root==null){
+            return false;
+        }
+        if(root.data==node){
+            return true;
+        }
+        result.add(root.data);
+        boolean left = getpath(root.left,node,result);
+        boolean right = getpath(root.right,node,result);
+        
+        if(!left && !right){
+            result.remove(result.size()-1);
+            return false;
+        }
+        return true;
+    }
+    public int kthAncestor(Node root, int k, int node) {
+        ArrayList<Integer> result = new ArrayList<>();
+        getpath(root,node,result);
+        if(result.isEmpty() || result.size()<k){
+            return -1;
+        }
+        int ans = result.get(result.size()-k);
+        return ans;
+        
+    }
+}
