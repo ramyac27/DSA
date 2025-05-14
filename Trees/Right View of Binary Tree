@@ -1,0 +1,46 @@
+https://www.geeksforgeeks.org/problems/right-view-of-binary-tree/1
+
+Right View of Binary Tree
+
+Given a Binary Tree, Your task is to return the values visible from Right view of it.
+
+Right view of a Binary Tree is set of nodes visible when tree is viewed from right side.
+
+Examples :
+
+Input: root = [10, 20, 90, 40, 60]
+     10
+    /   \
+  20     90
+ /   \
+40  60 
+Output: [10, 90, 60]
+
+class Solution {
+    // Function to return list containing elements of right view of binary tree.
+    ArrayList<Integer> rightView(Node root) {
+        ArrayList<Integer> ans = new ArrayList<>();
+        if(root==null){
+            return ans;
+        }
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
+        while(!q.isEmpty()){
+            int size=q.size();
+            for(int i=0;i<size;i++){
+                if(i==size-1){
+                    Node temp_ans = q.peek();
+                    ans.add(temp_ans.data);
+                }
+                Node temp = q.poll();
+                if(temp.left!=null){
+                    q.add(temp.left);
+                }
+                if(temp.right!=null){
+                    q.add(temp.right);
+                }
+            }
+        }
+        return ans;
+    }
+}
